@@ -6,6 +6,10 @@ keep_vars = true
 [observability]
 enabled = true
 
+[[routes]]
+pattern = "mail.gkotta.bid"
+custom_domain = true
+
 [[d1_databases]]
 binding = "db"			# D1 binding name; do not change
 database_name = "cloud-mail"		# D1 database name
