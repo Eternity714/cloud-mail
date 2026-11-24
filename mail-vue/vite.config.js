@@ -53,6 +53,8 @@ export default defineConfig(({mode}) => {
         },
         build: {
             target: 'es2022',
+            // 避开旧 /assets/ 下被长期缓存为 HTML 的脚本响应。
+            assetsDir: 'app-assets',
             outDir: env.VITE_OUT_DIR || 'dist',
             emptyOutDir: true,
             assetsInclude: ['**/*.json']
