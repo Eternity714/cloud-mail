@@ -8,11 +8,15 @@ import oauthService from './service/oauth-service';
 import analysisService from './service/analysis-service';
 import { handleWsUpgrade } from './websocket/connect';
 import proxyService from './service/proxy-service';
+import { isBlockedMaintenanceRequest } from './security/maintenance-access';
 export { MailHub } from './websocket/hub'; // Durable Object 必须从 Worker 入口导出
 export default {
 	 async fetch(req, env, ctx) {
 
 		const url = new URL(req.url)
+		if (isBlockedMaintenanceRequest(req, env)) {
+			return new Response('Not Found', { status: 404 });
+		}
 
 		// WebSocket：浏览器连 /realtime，转到 MailHub Durable Object
 		if (url.pathname === '/realtime') {

@@ -1,6 +1,7 @@
 name = "${NAME}"
 main = "src/index.js"
 compatibility_date = "2025-06-04"
+workers_dev = true
 
 [observability]
 enabled = true
@@ -48,6 +49,7 @@ new_sqlite_classes = ["MailHub"]
 
 
 [vars]
+maintenance_only_workers_dev = true
 ai_model = "${AI_MODEL}"
 analysis_cache = "${ANALYSIS_CACHE}"
 #orm_log = false
